@@ -1,30 +1,22 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:tugas_pertama/main.dart';
+import 'package:tugas_mobile/user_model.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  test('UserModel fromJson dan toJson', () {
+    final jsonResponse = {
+      'name': 'Budi Santoso',
+      'age': 22,
+    };
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    final user = UserModel.fromJson(jsonResponse);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    expect(user.name, 'Budi Santoso');
+    expect(user.id, 'Tidak ada ID');
+    expect(user.email, null);
+    expect(user.age, 22);
+    expect(user.isActive, false);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(user.toJson()['name'], 'Budi Santoso');
+    expect(user.toJson()['age'], 22);
   });
 }

@@ -15,11 +15,11 @@ class UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      id: json['id'] as String? ?? '',
-      name: json['name'] as String? ?? 'Unknown User',
-      email: json['email'] as String?,
-      age: json['age'] as int? ?? 0,
-      isActive: json['isActive'] as bool? ?? false,
+      id: json['id'] ?? 'Tidak ada ID',
+      name: json['name'] ?? '',
+      email: json['email'],
+      age: json['age'] ?? 0,
+      isActive: json['isActive'] ?? false,
     );
   }
 
@@ -32,19 +32,4 @@ class UserModel {
       'isActive': isActive,
     };
   }
-}
-
-void main() {
-  final jsonResponse = {
-    'name': 'Budi Santoso',
-    'age': 22,
-  };
-
-  final user = UserModel.fromJson(jsonResponse);
-
-  print('Nama: ${user.name}');
-  print('ID: ${user.id}');
-  print('Status: ${user.isActive}');
-
-  print('To JSON: ${user.toJson()}');
 }
