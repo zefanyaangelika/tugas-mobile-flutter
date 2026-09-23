@@ -8,10 +8,10 @@ class TieredPricingPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tugas 2: Pricing Card'),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: const Color(0xFFD98BAA),
         foregroundColor: Colors.white,
       ),
-      backgroundColor: Colors.grey[200],
+      backgroundColor: const Color(0xFFFDF5F8),
       body: const Center(
         child: SingleChildScrollView(child: TieredPricingCard()),
       ),
@@ -50,7 +50,7 @@ class TieredPricingCard extends StatelessWidget {
               const Center(
                 child: Column(
                   children: [
-                    Icon(Icons.laptop_mac, size: 50, color: Colors.blueAccent),
+                    Icon(Icons.laptop_mac,size: 50, color: Color(0xFFD98BAA),),
                     SizedBox(height: 8),
                     Text(
                       "Paket Profesional",
@@ -78,7 +78,7 @@ class TieredPricingCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
-                      color: Colors.blue,
+                      color: Color(0xFFD98BAA),
                     ),
                   ),
                   SizedBox(width: 4),

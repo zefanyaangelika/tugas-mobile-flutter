@@ -15,7 +15,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Kumpulan Tugas Flutter',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: ColorScheme.fromSeed(
+        seedColor: const Color(0xFFE8A0BF),),
+        
         useMaterial3: true,
       ),
       home: const DashboardPage(), // Halaman awal dijadikan Dashboard
@@ -110,22 +112,22 @@ class DashboardPage extends StatelessWidget {
 }
 
 // ===================================================
-// TUGAS 1 - LAYAR 1: Beranda (StatelessWidget)
+// TUGAS #5 - LAYAR 1: Beranda / Katalog
 // ===================================================
 class LayarBeranda extends StatelessWidget {
   const LayarBeranda({super.key});
 
   final List<Map<String, String>> daftarPengguna = const [
     {
-      'nama': 'Budi Santoso',
+      'nama': 'Valerino',
       'bio': 'Software Engineer yang menyukai pemrograman Flutter dan kopi.',
     },
     {
-      'nama': 'Siti Rahma',
+      'nama': 'Zefanya Anglica',
       'bio': 'UI/UX Designer fokus pada desain aplikasi mobile yang ramah pengguna.',
     },
     {
-      'nama': 'Ahmad Fauzi',
+      'nama': 'Samuel Pelita',
       'bio':
           'Data Scientist yang senang mengeksplorasi AI dan machine learning.',
     },
@@ -135,29 +137,46 @@ class LayarBeranda extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tugas 1: Daftar Pengguna'),
+        title: const Text('Beranda / Katalog'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: ListView.builder(
+        padding: const EdgeInsets.all(12),
         itemCount: daftarPengguna.length,
         itemBuilder: (context, index) {
           final pengguna = daftarPengguna[index];
-          return ListTile(
-            leading: const CircleAvatar(child: Icon(Icons.person)),
-            title: Text(pengguna['nama']!),
-            subtitle: const Text('Ketuk untuk melihat detail'),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => LayarDetailProfil(
-                    nama: pengguna['nama']!,
-                    bio: pengguna['bio']!,
+
+          return Card(
+            elevation: 3,
+            margin: const EdgeInsets.only(bottom: 12),
+            child: ListTile(
+              contentPadding: const EdgeInsets.all(12),
+              leading: const CircleAvatar(
+              backgroundColor: Color(0xFFF8D7E5),
+              child: Icon(
+              Icons.person,
+            color: Color(0xFFB85C82),),
+
+
+                 ),
+              title: Text(
+                pengguna['nama']!,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              subtitle: const Text('Ketuk untuk melihat detail'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 18),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LayarDetailProfil(
+                      nama: pengguna['nama']!,
+                      bio: pengguna['bio']!,
+                    ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           );
         },
       ),
@@ -194,7 +213,7 @@ class _LayarDetailProfilState extends State<LayarDetailProfil> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 20),
-            const Icon(Icons.account_circle, size: 120, color: Colors.blue),
+            const Icon(Icons.account_circle,size: 120,color: Color(0xFFD98BAA),),
             const SizedBox(height: 16),
             Text(
               widget.nama,
@@ -217,7 +236,9 @@ class _LayarDetailProfilState extends State<LayarDetailProfil> {
             const SizedBox(height: 24),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: _isFollowing ? Colors.grey : Colors.blue,
+                backgroundColor: _isFollowing
+                  ? const Color(0xFFE8B6C9)
+                  : const Color(0xFFD98BAA),
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 32,
